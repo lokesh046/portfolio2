@@ -970,6 +970,14 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   body[data-layout-hero="b"] .chip .num{ font-size:clamp(22px,7.4vw,30px); }
   body[data-layout-hero="b"] .chip .tx{ padding-top:0; }
   body[data-layout-hero="b"] .chip p{ max-width:none; }
+
+  /* a touch of extra breathing room around the social icons on a phone-width
+     flex wrap — kept inline with the Resume button rather than on their own
+     row, which would push this block low enough to collide with the giant
+     wordmark letters sitting behind it */
+  .hero-actions{ row-gap:16px; }
+  .hero-social{ gap:12px; }
+  .hero-social a{ width:40px; height:40px; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -2514,7 +2522,7 @@ const HI = qs('q', COARSE ? 'low' : 'high');
 const LOW = HI === 'low';
 const WANT_POST    = qs('post', '1') !== '0';
 const WANT_SHADOW  = qs('shadow', LOW ? '0' : '1') !== '0';
-const DPR_CAP      = qn('dpr', LOW ? 1.4 : 1.8);
+const DPR_CAP      = qn('dpr', LOW ? 2 : 1.8);
 /* the renderer trades resolution for frame rate on its own — the scene is
    fill-bound (five big alpha-blended veils plus a bloom chain), so pixels
    are the only knob worth turning on unknown hardware */
