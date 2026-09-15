@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Lokesh — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio for Lokesh, AI/ML Engineer & Backend Developer.
 
-Currently, two official plugins are available:
+The whole site — hero, Projects, Skills, Problem Solving, Journey, and Contact — runs as one
+continuous scroll inside [ThreeUI](https://github.com/MengTo/threeui)'s **Kage** landing page, a
+live Three.js Kyoto mountain-temple scene. Content is personalized directly into Kage's own
+multi-chapter structure rather than layered on top of it, so the camera fly-through and garden
+imagery stay in sync as you scroll from section to section.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- [Vite](https://vite.dev/) + React + TypeScript
+- [@designcodeio/threeui](https://www.npmjs.com/package/@designcodeio/threeui) (MIT-licensed, `KageLandingPage`)
+- Tailwind CSS v4
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Structure
 
-## Expanding the Oxlint configuration
+- `src/App.tsx` — renders the full-viewport Kage iframe; the outer page never scrolls, Kage's own
+  document is the sole scroll surface.
+- `src/components/KageHero.tsx` — mounts `KageLandingPage` with the site's typography/color config.
+- `public/landing-pages/kage.html` — the personalized Kage document itself (copied from the
+  package's own asset bundle per its README, then edited in place): hero copy, nav, and all five
+  content chapters (Projects, Skills, Problem Solving, Journey, Contact) live here.
+- `public/landing-pages/secret-pathways-assets/` — Kage's fonts, Three.js build, and foreground
+  garden imagery, required alongside `kage.html`.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Development
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev       # local dev server
+npm run build     # type-check + production build
+npm run preview   # preview the production build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Deployment
+
+Deployed on [Vercel](https://vercel.com) — zero config, auto-detected as a Vite app
+(`vite build` → `dist`).
