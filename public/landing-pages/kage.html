@@ -540,6 +540,7 @@ h1,h2,h3{ font-weight:400; margin:0; letter-spacing:-.005em; }
 .foot-base{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
   margin-top:clamp(38px,6vh,74px); padding-top:20px; border-top:1px solid var(--line-soft);
   font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+.foot-base .no-caps{ text-transform:none; }
 
 /* ============================================================= progress rail */
 .rail{ position:fixed; right:calc(var(--pad) - 4px); top:50%; transform:translateY(-50%); z-index:45;
@@ -1442,7 +1443,7 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   </div>
   <div class="foot-base">
     <span>© 2026 Lokesh</span>
-    <span>lokeshlearn1@gmail.com</span>
+    <span class="no-caps">lokeshlearn1@gmail.com</span>
     <span>Built with React, Three.js &amp; ThreeUI</span>
   </div>
 </footer>
